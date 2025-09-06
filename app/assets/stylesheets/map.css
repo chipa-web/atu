@@ -7,7 +7,7 @@
 }
 
 #world-map svg {
-    width: min(960px, 95vw);
+    width: min(960px, 95px);
     height: auto;
     aspect-ratio: 960 / 600;
     display: block;
