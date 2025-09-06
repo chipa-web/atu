@@ -1,0 +1,15 @@
+<h1>GeekNational</h1>
+<h3>一覧ページ</h3>
+<%= link_to "新規投稿へ", new_national_path %>
+<%= link_to "診断を始める", new_perfume_path, class: "link" %>
+<div class="nationals-container">
+  <% @nationals.each do |t| %>
+    <div class="tweet">
+      <%= t.name %>
+      <%= t.spot %>
+      <%= t.food %>
+      <%= link_to "編集する", edit_national_path(t.id) %>
+      <%= button_to "削除する", national_path(t.id), method: :delete %>
+</div>
+  <% end %>
+</div>

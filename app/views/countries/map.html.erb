@@ -1,0 +1,89 @@
+<!DOCTYPE html> <!--　この文章がHTML文章であることを伝える要素です。-->
+<html lang="ja"><!--言語の指定-->
+  <head><!--ページに表示されない情報(サイトの裏側の設定)-->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/map.css">
+    <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
+    <link rel="stylesheet" href="./stylesheets/map.css">
+  </head>
+<section id="mapblock">
+<div class="map-title">
+<h1>~World　Map~</h1>
+</div>
+<div id="world-map"></div>
+
+<script type="module">
+    import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+    import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
+    
+    const posted = new Set(<%= raw @posted_codes.to_json %>);
+    const codeToName = <%= raw @code_to_name.to_json %>; // ← 国コード→名前
+
+    const palette = [
+        "#5aa9e6","#7fc8f8","#fde74c","#9bc53d","#f06c9b",
+        "#f18f01","#e55934","#5e548e","#2bb673","#3da5d9"
+    ];
+
+    function colorIndexFromCode(code) {
+        let h = 0;
+        for (let i = 0; i < code.length; i++) {
+            h = (h * 31 + code.charCodeAt(i)) >>> 0;
+        }
+        return h % palette.length;
+    }
+
+    const svg = d3.select("#world-map").append("svg")
+        .attr("width", 960).attr("height", 600);
+
+    const projection = d3.geoMercator().rotate([-135, 0]).scale(150).translate([480, 300]);
+    const path = d3.geoPath().projection(projection);
+
+    const isoNumericToAlpha2 = { "392": "JP", "840": "US" };
+
+    d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world => {
+    const countries = feature(world, world.objects.countries).features;
+
+    svg.selectAll("path")
+        .data(countries)
+        .enter().append("path")
+        .attr("d", path)
+        .attr("stroke", "#333")
+        .attr("fill", d => {
+            const alpha2 = isoNumericToAlpha2[d.id];
+            if (alpha2 && posted.has(alpha2)) {
+                  return palette[colorIndexFromCode(alpha2)];
+            }
+            return "#cccccc";
+        })
+        .each(function(d){
+            const alpha2 = isoNumericToAlpha2[d.id];
+            const label  = alpha2 ? (codeToName[alpha2] || alpha2) : "未登録";
+            d3.select(this).append("title").text(label); // ← ホバー表示
+        })
+        .on("click", (_, d) => {
+            const alpha2 = isoNumericToAlpha2[d.id];
+            if (alpha2) {
+                  window.location.href = `/countries/${alpha2}/country_posts`;
+            } else {
+                alert("この国は未登録です");
+            }
+        });
+    });
+</script>
+</section>
+
+
+<h2>診断スタート</h2>
+<%= link_to "診断を始める", new_perfume_path, class: "link" %>
+
+<% if user_signed_in? %>
+    <p>ログイン中：<%= current_user.email %></p>
+    <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to "ログイン", new_user_session_path %>
+<% end %>
+
+<% if user_signed_in? && current_user.admin? %>
+    <p><%= link_to "新規投稿", new_country_post_path %></p>
+<% end %>
+

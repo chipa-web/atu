@@ -1,0 +1,32 @@
+.posts-page header{
+  height: 60px;
+  background-color: #f9320f;
+}
+/* 全体のコンテナ */
+.country-container {
+  display: flex; /* Flexboxを有効にする */
+  flex-direction: column; /* 要素を縦に並べる */
+  align-items: center; /* 要素を水平方向の中央に配置 */
+  text-align: center; /* テキストを中央に配置 */
+  padding: 20px;
+}
+
+/* 国名のスタイル */
+.country-name {
+  font-size: 48px; /* 文字を非常に大きくする */
+  font-weight: bold; /* 太字にする */
+  color: #333;
+  margin-bottom: 20px; /* 画像との間にスペースを空ける */
+}
+
+/* 画像のスタイル */
+.country-image img {
+  max-width: 600px; /* 親要素に合わせて幅を最大化 */
+  height: auto; /* 高さを自動調整 */
+  display: block; /* 余分な空白をなくす */
+}
+
+.country-info{
+    text-align: center;
+}
+

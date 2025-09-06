@@ -1,0 +1,24 @@
+<h2>投稿を編集（<%= @country.name %>）</h2>
+
+<%= form_with model: [@country, @country_post], local: true do |f| %>
+  <div>
+    <%= f.label :new_country_code, "国を選択" %><br>
+    <%= f.select :new_country_code,
+                 options_from_collection_for_select(@countries, :code, :name, @country_post.new_country_code || @country.code),
+                 prompt: "選択してください" %>
+  </div>
+
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+
+  <%= f.submit "更新する" %>
+<% end %>
+
+<p><%= link_to "一覧へ戻る", country_country_posts_path(@country) %></p>

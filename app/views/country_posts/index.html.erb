@@ -1,0 +1,52 @@
+<!DOCTYPE html> <!--　この文章がHTML文章であることを伝える要素です。-->
+<html lang="ja"><!--言語の指定-->
+  <head><!--ページに表示されない情報(サイトの裏側の設定)-->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/country_postsindex.css">
+    <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
+    <link rel="stylesheet" href="./stylesheets/cuntry_postsindex.css">
+
+<body class="posts-page">
+<header>
+</header>
+</body>
+
+<h2>About <%= @country.name %></h2>
+
+<ul>
+<div class="country-container">
+  
+  <% @country_posts.each do |post| %>
+    <li style="margin-bottom:1rem;">
+
+    <div class="country-name">
+      <strong><%= post.title %></strong><br>
+    </div>
+  
+  
+  <div class="country-image">
+    <% if post.image.attached? %>
+            <%= image_tag post.image, size: '250x200'%>
+        <% end %>
+  </div>
+</div>
+
+   <div class="country-info">
+      <%= simple_format(post.content) %><br>
+   </div>
+    <%= link_to "詳細を見る", country_country_post_path(@country, post), class: "btn" %>
+  
+
+
+
+
+
+    
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "地図へ戻る", root_path %></p>
+
+<footer>	
+</footer>

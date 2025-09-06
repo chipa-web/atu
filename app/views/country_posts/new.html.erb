@@ -1,0 +1,30 @@
+<h2>新規投稿</h2>
+
+<%= form_with model: @country_post, url: country_posts_path, local: true, html: { multipart: true } do |f| %>
+    <div>
+        <%= f.label :new_country_code, "国を選択" %><br>
+        <%= f.select :new_country_code,
+                    options_from_collection_for_select(@countries, :code, :name),
+                    { prompt: "選択してください" },
+                    { required: true } %>
+    </div>
+
+    <div>
+        <%= f.label :title %><br>
+        <%= f.text_field :title, required: true %>
+    </div>
+
+    <div>
+        <%= f.label :content %><br>
+        <%= f.text_area :content, required: true %>
+    </div>
+
+   <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+   
+    <%= f.submit "投稿する" %>
+<% end %>
+
+<p><%= link_to "地図へ戻る", root_path %></p>

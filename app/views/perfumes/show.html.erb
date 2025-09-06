@@ -1,0 +1,155 @@
+<!DOCTYPE html> <!--　この文章がHTML文章であることを伝える要素です。-->
+<html lang="ja"><!--言語の指定-->
+  <head><!--ページに表示されない情報(サイトの裏側の設定)-->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/perfumesshow.css">
+    <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
+    <link rel="stylesheet" href="./stylesheets/perfumesshow.css">
+  </head>
+<div class="intoro">
+  <h5>診断結果</h5>
+  <p>あなたにおすすめの国は…</p>
+</div>
+<div class="perfume-container">
+  <% case [@perfume.question1, @perfume.question2, @perfume.question3] %>
+  <% when ["1", "1", "1"] %>
+    <h1>カナダ</h1>
+    <p>ナイアガラの滝、バンフ国立公園、オーロラなど壮大な自然景観を誇る国。</p>
+    <p>先住民文化とヨーロッパ文化が融合した多文化社会で、メープルシロップやパウティンなどのユニークな食文化も持つ。冬のアイスホッケーや夏のカヌーなど季節ごとのアクティビティも充実。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756519357/image-17_uldzns.jpg" class="national-image">
+  <% when ["1", "1", "2"] %>
+    <h1>オーストラリア</h1>
+    <p>グレートバリアリーフ、エアーズロック（ウルル）、シドニーオペラハウスなど独特の自然と建築が魅力。</p>
+    <p>先住民アボリジニの文化と現代西洋文化が共存し、ワイン産地やビーチカルチャー、多文化社会を反映した多様な食文化も特徴的。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756720050/i15_xculzn.jpg" class="national-image">
+  <% when ["1", "1", "3"] %>
+    <h1>アルゼンチン</h1>
+    <p>イグアスの滝、パタゴニアの氷河、ブエノスアイレスの歴史的街並みなど南米随一の景観を持つ国。</p>
+    <p>タンゴ発祥の地として知られ、グリルした肉料理アサードやマテ茶の文化、サッカーへの情熱も国民のアイデンティティの一部。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756720373/images_kq4cwa.jpg" class="national-image">
+  <% when ["1", "2", "1"] %>
+    <h1>日本</h1>#
+    <p>伝統と現代が融合した独自の文化を持つ島国。京都の寺社仏閣、富士山、桜や紅葉などの四季折々の自然美、和食や温泉文化が世界中から観光客を惹きつける。</p>
+    <p>アニメやマンガなどのポップカルチャーも国際的に人気。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756214310/4x79see1adklcf3xb0r9qdy9rpr5.jpg" class="national-image">
+  <% when ["1", "2", "2"] %>
+    <h1>フランス</h1>
+    <p>エッフェル塔、ルーブル美術館、モン・サン・ミシェルなど世界的な観光名所を持つ芸術と文化の国。</p>
+    <p>ファッション、ワイン、チーズ、パンなど洗練された食文化と、プロヴァンスやロワール渓谷などの美しい田園風景も魅力的。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756720875/2024_1025_1348_ov0u0b.jpg" class="national-image">
+  <% when ["1", "2", "3"] %>
+    <h1>ドイツ</h1>#
+    <p>ノイシュヴァンシュタイン城やケルン大聖堂などの歴史的建造物、黒い森などの美しい自然が魅力。</p>
+    <p>オクトーバーフェストやクリスマスマーケットなどの伝統的な祭りや、クラシック音楽の歴史も豊か。ビールと多様なソーセージ文化も有名。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721054/download_balfhn.jpg" class="national-image">
+  <% when ["1", "3", "1"] %>
+    <h1>イタリア</h1>
+    <p>コロッセオ、ヴェネツィア、フィレンツェなど世界遺産の宝庫。ルネサンス芸術の中心地であり、オペラ発祥の地でもある。</p>
+    <p>各地方ごとに異なるパスタ、ピザ、ジェラートなどの多彩な食文化と、ファッションやデザインの中心地としても知られる。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721117/download_hmpcwr.jpg" class="national-image">
+  <% when ["1", "3", "2"] %>
+    <h1>インドネシア</h1>#
+    <p>バリ島の寺院や棚田、コモド島のドラゴン、ボロブドゥール遺跡など多島国家ならではの多様な魅力。</p>
+    <p>影絵芝居のワヤンや、バティックなどの伝統工芸、ナシゴレンやサテなどの香辛料豊かな食文化も観光客を惹きつける。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721199/Bali-featured-1244x700_kseo8k.jpg" class="national-image">
+  <% when ["1", "3", "3"] %>
+    <h1>韓国</h1>
+    <p>景福宮や昌徳宮などの歴史的建造物と、ソウルやプサンなどの近代的都市が共存する国。チマチョゴリなどの伝統衣装、ビビンバやキムチなどの発酵食品を活かした食文化が特徴。</p>
+    <p>近年はK-POP、韓国ドラマなどの文化コンテンツが世界的に人気。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721560/images_vdhhns.jpg" class="national-image">
+  <% when ["2", "1", "1"] %>
+    <h1>アメリカ</h1>
+    <p>グランドキャニオンやイエローストーン国立公園など壮大な自然と、ニューヨークやロサンゼルスなど多様な文化が息づく大都市を持つ国。</p>
+    <p>ハリウッド映画、ジャズ、ヒップホップなど世界的な文化を生み出し、多民族の食文化も魅力的。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721657/download_tpctmb.jpg" class="national-image">
+  <% when ["2", "1", "2"] %>
+    <h1>メキシコ</h1>
+    <p>マヤやアステカの遺跡、カラフルな街並み、カリブ海のビーチリゾートなど多彩な観光資源を持つ国。</p>
+    <p>マリアッチ音楽、死者の日などの独特な祭り、タコスやモレなど世界的に人気の食文化も魅力。フリーダ・カーロなどの芸術家も輩出。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721715/vxm_view_01_mulezq.jpg" class="national-image">
+  <% when ["2", "1", "3"] %>
+    <h1>トルコ</h1>
+    <p>イスタンブールのブルーモスクやアヤソフィア、カッパドキアの奇岩群、パムッカレの石灰棚など東西文明の交差点ならではの文化遺産が点在。</p>
+    <p>トルコ式バス（ハマム）やトルコ絨毯などの伝統文化、ケバブやバクラヴァなどの豊かな食文化も人気。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721881/MV_country_turkey_vf3v6l.jpg" class="national-image">
+  <% when ["2", "2", "1"] %>
+    <h1>イギリス</h1>
+    <p>大英博物館、バッキンガム宮殿、ストーンヘンジなど歴史的名所が点在する国。</p>
+    <p>シェイクスピアからビートルズに至る豊かな文学・音楽文化と、伝統的なパブカルチャー、アフタヌーンティーなどの独自の習慣が魅力。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721958/images_gwf5ub.jpg" class="national-image">
+  <% when ["2", "2", "2"] %>
+    <h1>ブラジル</h1>#
+    <p>リオのキリスト像、イグアスの滝、アマゾンの熱帯雨林など自然と都市の魅力が共存。</p>
+    <p>カーニバルやサンバなどの情熱的な音楽・ダンス文化、フェイジョアーダなどの豊かな食文化、そしてサッカーを中心としたスポーツ文化が国民の誇り。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756722020/download_bwhhdo.jpg" class="national-image">
+  <% when ["2", "2", "3"] %>
+    <h1>南アフリカ</h1>
+    <p>テーブルマウンテン、クルーガー国立公園のサファリ、ケープタウンの美しい海岸線など自然の宝庫。</p>
+    <p>多民族国家ならではの「レインボーネーション」文化、伝統的な部族舞踊、ブラーイ（バーベキュー）文化、ワイン産地としての顔も持つ。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756722162/download_bjyxmd.jpg" class="national-image">
+  <% when ["2", "3", "1"] %>
+    <h1>ロシア</h1>#
+    <p>クレムリン、エルミタージュ美術館、サンクトペテルブルクの白夜など魅力的な観光資源を持つ国。</p>
+    <p>バレエやクラシック音楽の伝統が根付き、マトリョーシカ人形やサモワールなどの伝統工芸、ボルシチやキャビアなどの特色ある食文化も魅力。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756722223/images_l6l76s.jpg" class="national-image">
+  <% when ["2", "3", "2"] %>
+    <h1>中国</h1>
+    <p>万里の長城、故宮博物院、兵馬俑など5000年の歴史を誇る文明の遺産が点在。</p>
+    <p>京劇や水墨画などの伝統芸術と、多様な地方料理や茶文化が魅力。桂林の山水画のような景観や、張家界などの絶景も観光客を魅了する。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756722266/download_ftfqxt.jpg" class="national-image">
+  <% when ["2", "3", "3"] %>
+    <h1>サウジアラビア</h1>
+    <p>メッカとメディナのイスラム聖地、マダイン・サーレハの古代遺跡、紅海の美しい海岸線など歴史と自然が融合した国。</p>
+    <p>砂漠のベドウィン文化、アラビック・コーヒーとナツメヤシの伝統的なもてなし文化、豪華な装飾芸術も特徴的。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756722329/shutterstock_1224851173_w8alvq.jpg" class="national-image">
+  <% when ["3", "1", "1"] %>
+    <h1>ドイツ</h1>
+    <p>タージマハル、ジャイプールのピンクシティ、バラナシの聖地など多彩な文化遺産を持つ国。</p>
+    <p>ヨガやアーユルヴェーダの発祥地であり、カレー、タンドリー料理、チャイなど香り豊かな食文化、そして色彩鮮やかな衣装や祭りが特徴的。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721054/download_balfhn.jpg" class="national-image">
+  <% when ["3", "1", "2"] %>
+    <h1>カナダ</h1>
+    <p>ナイアガラの滝、バンフ国立公園、オーロラなど壮大な自然景観を誇る国。</p>
+    <p>先住民文化とヨーロッパ文化が融合した多文化社会で、メープルシロップやパウティンなどのユニークな食文化も持つ。冬のアイスホッケーや夏のカヌーなど季節ごとのアクティビティも充実。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756519357/image-17_uldzns.jpg" class="national-image">
+  <% when ["3", "1", "3"] %>
+    <h1>日本</h1>
+    <p>伝統と現代が融合した独自の文化を持つ島国。京都の寺社仏閣、富士山、桜や紅葉などの四季折々の自然美、和食や温泉文化が世界中から観光客を惹きつける。</p>
+    <p>アニメやマンガなどのポップカルチャーも国際的に人気。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756722482/images_e7zsl3.jpg" class="national-image">
+  <% when ["3", "2", "1"] %>
+    <h1>フランス</h1>
+    <p>エッフェル塔、ルーブル美術館、モン・サン・ミシェルなど世界的な観光名所を持つ芸術と文化の国。</p>
+    <p>ファッション、ワイン、チーズ、パンなど洗練された食文化と、プロヴァンスやロワール渓谷などの美しい田園風景も魅力的。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756720875/2024_1025_1348_ov0u0b.jpg" class="national-image">
+  <% when ["3", "2", "2"] %>
+    <h1>イタリア</h1>
+    <p>コロッセオ、ヴェネツィア、フィレンツェなど世界遺産の宝庫。ルネサンス芸術の中心地であり、オペラ発祥の地でもある。</p>
+    <p>各地方ごとに異なるパスタ、ピザ、ジェラートなどの多彩な食文化と、ファッションやデザインの中心地としても知られる。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721117/download_hmpcwr.jpg" class="national-image">
+  <% when ["3", "2", "3"] %>
+    <h1>韓国</h1>
+    <p>景福宮や昌徳宮などの歴史的建造物と、ソウルやプサンなどの近代的都市が共存する国。チマチョゴリなどの伝統衣装、ビビンバやキムチなどの発酵食品を活かした食文化が特徴。</p>
+    <p>近年はK-POP、韓国ドラマなどの文化コンテンツが世界的に人気。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721560/images_vdhhns.jpg" class="national-image">
+  <% when ["3", "3", "1"] %>
+    <h1>インド</h1>
+    <p>タージマハル、ジャイプールのピンクシティ、バラナシの聖地など多彩な文化遺産を持つ国。</p>
+    <p>ヨガやアーユルヴェーダの発祥地であり、カレー、タンドリー料理、チャイなど香り豊かな食文化、そして色彩鮮やかな衣装や祭りが特徴的。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756722691/images_yn6ni1.jpg" class="national-image">
+  <% when ["3", "3", "2"] %>
+    <h1>インドネシア</h1>
+    <p>バリ島の寺院や棚田、コモド島のドラゴン、ボロブドゥール遺跡など多島国家ならではの多様な魅力。</p>
+    <p>影絵芝居のワヤンや、バティックなどの伝統工芸、ナシゴレンやサテなどの香辛料豊かな食文化も観光客を惹きつける。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756721199/Bali-featured-1244x700_kseo8k.jpg" class="national-image">
+  <% when ["3", "3", "3"] %>
+    <h1>オーストラリア</h1>
+    <p>グレートバリアリーフ、エアーズロック（ウルル）、シドニーオペラハウスなど独特の自然と建築が魅力。</p>
+    <p>先住民アボリジニの文化と現代西洋文化が共存し、ワイン産地やビーチカルチャー、多文化社会を反映した多様な食文化も特徴的。</p>
+    <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756720050/i15_xculzn.jpg" class="national-image">
+  <% end %>
+<div class="outro">
+  <p>World Mapでこの国を探してみよう！</p>
+  <br><%= link_to "World Mapへ", countries_map_path, class: "map_link" %></br>
+</div>
+</div>

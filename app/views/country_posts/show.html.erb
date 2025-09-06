@@ -1,0 +1,21 @@
+<!-- app/views/country_posts/show.html.erb -->
+<html lang="ja"><!--言語の指定-->
+  <head><!--ページに表示されない情報(サイトの裏側の設定)-->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/countrypostsshow.css">
+    <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
+    <link rel="stylesheet" href="./stylesheets/countrypostsshow.css">
+<h2><%= @country.name %>：<%= @country_post.title %></h2>
+<%= simple_format(@country_post.content) %>
+
+<p>
+  <% if current_user&.admin? %>
+    <%= link_to "編集", edit_country_country_post_path(@country, @country_post) %> |
+    <%= button_to "削除",
+          country_country_post_path(@country, @country_post),
+          method: :delete,
+          form: { data: { turbo_confirm: "削除しますか？" } } %>
+  <% end %>
+</p>
+
+<p><%= link_to "一覧へ戻る", country_country_posts_path(@country) %></p>

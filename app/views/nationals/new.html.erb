@@ -1,0 +1,23 @@
+<h1>GeekNational</h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @National do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :spot %>
+    <%= f.text_field :spot, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :food %>
+    <%= f.text_field :food, :size => 30 %>
+  </div>
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", nationals_path %>

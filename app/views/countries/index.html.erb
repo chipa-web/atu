@@ -1,0 +1,103 @@
+<!DOCTYPE html> <!--　この文章がHTML文章であることを伝える要素です。-->
+<html lang="ja"><!--言語の指定-->
+  <head><!--ページに表示されない情報(サイトの裏側の設定)-->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+    <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
+    <link rel="stylesheet" href="./stylesheets/index.css">
+  </head>
+  <body>
+    <header class="header-nav">
+      <nav><a href="#first-block">Home</a></nav>
+      <nav><a href="#second-block">About GeekNational</a></nav>
+      <nav><a href="#third-block">G20/BRICs</a></nav>
+    </header>
+
+  <!--  コンテンツを一旦仮置きする  -->
+    <section id="first-block">
+     <div class="title-container">
+      <h1>GeekNational</h1>
+      <h3>~ 指先一つ、世界の旅へ ~</h3>
+      <p>
+      <br><%= link_to "World Mapへ", countries_map_path, class: "map_link" %></br>
+      </p>
+    </div>
+    </section>
+    <section id="second-block">
+    <p class="info-title">
+        About GeekNational
+    </p>
+    <div class="about-container">
+      <p class="info-text">
+        <b>World Map</b>
+        <br>
+        <span class="font-small">
+        世界地図上で、国を検索することができます。
+        <br>
+        国を選択すると、国の情報にすぐにアクセスできます。
+        <br>
+        対応する国は、順次追加されます。
+
+        </span>
+      </p>
+
+      <div class="link-text">
+        <p>
+        <b><%= link_to "World Mapへ", countries_map_path, class: "map_link" %></b>
+        </p>
+        </div>
+
+        <p class="info-text">
+        <b>診断機能</b>
+        <br>
+        <span class="font-small">
+        自分の性格や価値観に合った国を診断することができます。
+        <br>
+        主要国といわれるG20の国々の中から診断されます。
+        <br>
+        診断されたら、その国をWorld　Map上で探してみましょう
+        </span>
+        </p>
+
+        
+
+      
+    </div>
+    </section>
+    <section id="third-block">
+    <p class="events-title">
+      G20の内約
+    </p>
+    <div class="event-container">
+      <div class="event">
+        <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756622597/G20-cover-image_4b32b63c5c28c858e051e9d1a2a717a1_lxvb07.png" class="G20-image">
+        <p class="event-name">
+          <span>G7</span>
+          <br>
+          <br>
+          アメリカ合衆国<br>
+          日本 カナダ<br>
+          ドイツ イギリス<br>
+          フランス イタリア<br>
+        </p>
+      </div>
+      <div class="event">
+        <p class="event-name">
+          <span>BRICs</span>
+          <br>
+          <br>
+          中国 インド<br>
+          ロシア ブラジル<br>
+        </p>
+        <image src="https://res.cloudinary.com/demmahfmp/image/upload/v1756622795/download_b5b02y.png" class="G20-image">
+      </div>
+    </div>
+    </section>
+  <!--  コンテンツはここまで  -->
+
+    <footer>
+      <p>Copyright © ○○○○ All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
+<%= link_to "World Mapへ", countries_map_path, class: "link" %>

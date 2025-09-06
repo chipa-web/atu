@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header{
+  height: 60px;
+  background-color: #33331b;
+}
+
+.header-nav {
+  background-color: #000;
+  position: fixed;
+  height: 60px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav {
+  margin-right: 5%;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f00;
+}
+
+#first-block {
+  background-image: url("https://res.cloudinary.com/demmahfmp/image/upload/v1756213953/c2753ffc-e62a-46ed-8d15-b59a512293fe.png");
+  background-size: cover;
+  width: 100%;
+  height: 550px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 80px;
+  font-family: serif;
+  color: #444;
+}
+
+h3 {
+  font-size: 50px;
+  font-family: serif;
+  color: #444;
+}
+
+#second-block {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.link-text {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #444;
+
+  width: 30%;
+}
+
+.map_link {
+  color: #ffffff; /* 色を白に変更 */
+  background-color: #007bff; /* 背景色を青に変更 */
+  padding: 10px 20px; /* パディングを追加してボタンのように見せる */
+  text-decoration: none; /* 下線を削除 */
+  border-radius: 5px; /* 角を丸くする */
+}
+
+/* マウスホバー */
+.map_link:hover {
+  background-color: #0056b3; /* ホバー時に少し暗い色にする */
+}
+.info-title {
+  font-size: 60px;
+  font-family: serif;
+  margin-bottom: 20px;
+  color: #444;
+  text-align: center;
+}
+
+.info-text {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #444;
+
+  width: 30%;
+}
+
+.font-small {
+  font-size: 15px;
+}
+
+#third-block {
+  background-color: #f7f7f7;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.event-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.events-title {
+  font-size: 60px;
+  font-family: serif;
+  color: #444;
+}
+
+.event {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.event-name {
+  font-size: 20px;
+  padding: 10px;
+  width: 40%;
+}
+
+span {
+  font-size: 40px;
+  font-family: serif;
+}
+
+.G20-image {
+  width: 40%;
+  height: 330px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 50px;
+  background-color: #000;
+  font-size: 15px;
+  color: #fff;
+}
