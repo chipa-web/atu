@@ -1,24 +1,1081 @@
+/* app.css */
+
+/* チェックボックスを画面から非表示にする */
+.hidden-checkbox {
+  display: none;
+}
+
+/* ハンバーガーメニューのアイコンのスタイル（変更なし）*/
+.hamburger-menu {
+  display: block;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  position: absolute;
+  right: 20px;
+  top: 10px; /* ヘッダー内で適切な位置に調整 */
+  z-index: 1000; /* メニューの上に表示されるように */
+  margin-bottom: 50px;
+}
+
+.hamburger-menu .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+/* --- ナビゲーションメニューのスタイル --- */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0; /* 右端に配置 */
+  height: 50%; /* 画面の高さいっぱい */
+  width: 0; /* 初期状態では幅0 */
+  background-color: #f5f5f3bd; /* 背景色 */
+  overflow: hidden; /* 内容がはみ出さないように隠す */
+  transition: width 0.3s ease-in-out; /* widthの変化にアニメーション */
+  z-index: 999; /* ハンバーガーボタンより下に */
+
+  /* メニュー内のリンクを縦並びにするためのFlexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 垂直方向の中央揃え */
+  align-items: center; /* 水平方向の中央揃え */
+}
+
+/* メニューが開いたときのスタイル */
+.hidden-checkbox:checked + .nav-menu {
+  width: 10vw; /* 開いたときのメニューの幅 (例: 画面幅の70%) */
+  /* 必要であれば max-width: 300px; などで最大幅を設定することもできます */
+}
+
+/* メニュー内のリンクのスタイル */
+.nav-menu a {
+  color: #100000;
+  text-decoration: none;
+  font-size: 1em; /* フォントサイズを調整 */
+  margin: 15px 0; /* リンク間の余白 */
+  opacity: 0; /* 初期状態では非表示 */
+  transition: opacity 0.3s ease-in-out 0.3s; /* リンクのフェードインアニメーション（遅延あり） */
+  /* --- ここに区切り線を追加 --- */
+  padding-bottom: 10px; /* 線とテキストの間に余白 */
+  border-bottom: 1px solid rgba(15, 1, 1, 0.568); /* 薄い白色の線 */
+  width: 80%; /* 線の長さを調整 */
+  text-align: center; /* リンクを中央に配置 */
+}
+
+/* 最後のリンクには下線を表示しない */
+.nav-menu a:last-child {
+  border-bottom: none;
+}
+
+/* メニューが開いたときにリンクを表示 */
+.hidden-checkbox:checked + .nav-menu a {
+  opacity: 1; /* 開いたら表示 */
+}
+
+header{
+  height: 60px;
+  background-color: #33331b;
+  margin-bottom: 200px;
+}
+
+.mappage-nav {
+  background-color: #000;
+  position: fixed;
+  height: 60px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000; /* 高い値を設定して、他の要素より手前に表示 */
+}
+
+nav {
+  margin-right: 5%;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #007bff;
+}
+
+#first-nav{
+  background-color: #fffffe42;
+}
+
 #world-map {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 70vh;
     margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
+    padding: 20px;
+    background-color: #fefbfbea;
+    
 }
 
-#world-map svg {
-    width: min(960px, 95px);
+/* app.css */
+
+#world-map-svg {
+    width: 90vw;
+    max-width: 960px;
     height: auto;
-    aspect-ratio: 960 / 600;
+    aspect-ratio: 600 / 600;
     display: block;
+    margin: 0 auto; /* 中央寄せ */
+    background-color: #fff; /* 地図の背景も白に */
+    border-radius: 10px; /* 少し角丸に */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
-.map-title{
+
+/* 上下の流れる線 */
+.infinity-line-horizontal {
+    position: absolute;
+    left: -40px; /* world-mapのpadding: 60pxを考慮 */
+    right: -40px;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 188, 212, 0.8) 20%, 
+        rgba(156, 39, 176, 0.9) 40%, 
+        rgba(255, 87, 34, 0.8) 60%, 
+        rgba(76, 175, 80, 0.9) 80%, 
+        transparent 100%
+    );
+    background-size: 300% 100%;
+    animation: infinityFlowHorizontal 4s ease-in-out infinite;
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+    z-index: 1;
+}
+
+.infinity-line-top {
+    top: -30px;
+}
+
+.infinity-line-bottom {
+    bottom: -30px;
+    animation-delay: 2s; /* 上下で時差をつける */
+}
+
+/* 左右の流れる線 */
+.infinity-line-vertical {
+    position: absolute;
+    top: -40px;
+    bottom: -40px;
+    width: 3px;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(255, 87, 34, 0.8) 20%, 
+        rgba(76, 175, 80, 0.9) 40%, 
+        rgba(0, 188, 212, 0.8) 60%, 
+        rgba(156, 39, 176, 0.9) 80%, 
+        transparent 100%
+    );
+    background-size: 100% 300%;
+    animation: infinityFlowVertical 4s ease-in-out infinite;
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(255, 87, 34, 0.4);
+    z-index: 1;
+}
+
+.infinity-line-left {
+    left: -30px;
+    animation-delay: 1s;
+}
+
+.infinity-line-right {
+    right: -30px;
+    animation-delay: 3s;
+}
+
+/* 角の装飾（控えめに） */
+.infinity-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+        rgba(0, 188, 212, 0.8) 0%, 
+        rgba(156, 39, 176, 0.6) 50%,
+        transparent 100%
+    );
+    animation: cornerPulse 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+.corner-top-left {
+    top: -42px;
+    left: -42px;
+}
+
+.corner-top-right {
+    top: -42px;
+    right: -42px;
+    animation-delay: 0.75s;
+}
+
+.corner-bottom-left {
+    bottom: -42px;
+    left: -42px;
+    animation-delay: 1.5s;
+}
+
+.corner-bottom-right {
+    bottom: -42px;
+    right: -42px;
+    animation-delay: 2.25s;
+}
+
+/* 流れるアニメーション定義 */
+@keyframes infinityFlowHorizontal {
+    0% { 
+        background-position: -300% 0;
+        opacity: 0.6;
+    }
+    25% { 
+        opacity: 1;
+    }
+    50% { 
+        background-position: 0% 0;
+        opacity: 1;
+    }
+    75% { 
+        opacity: 1;
+    }
+    100% { 
+        background-position: 300% 0;
+        opacity: 0.6;
+    }
+}
+
+@keyframes infinityFlowVertical {
+    0% { 
+        background-position: 0 -300%;
+        opacity: 0.6;
+    }
+    25% { 
+        opacity: 1;
+    }
+    50% { 
+        background-position: 0 0%;
+        opacity: 1;
+    }
+    75% { 
+        opacity: 1;
+    }
+    100% { 
+        background-position: 0 300%;
+        opacity: 0.6;
+    }
+}
+
+@keyframes cornerPulse {
+    0%, 100% { 
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: scale(1.3);
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+    }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1200px) {
+    .infinity-line-horizontal {
+        left: -30px;
+        right: -30px;
+        height: 2.5px;
+    }
+    
+    .infinity-line-vertical {
+        top: -30px;
+        bottom: -30px;
+        width: 2.5px;
+    }
+    
+    .infinity-line-top,
+    .infinity-line-bottom {
+        top: -25px;
+    }
+    
+    .infinity-line-bottom {
+        bottom: -25px;
+    }
+    
+    .infinity-line-left,
+    .infinity-line-right {
+        left: -25px;
+    }
+    
+    .infinity-line-right {
+        right: -25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .infinity-line-horizontal {
+        left: -20px;
+        right: -20px;
+        height: 2px;
+    }
+    
+    .infinity-line-vertical {
+        top: -20px;
+        bottom: -20px;
+        width: 2px;
+    }
+    
+    .infinity-line-top,
+    .infinity-line-bottom {
+        top: -18px;
+    }
+    
+    .infinity-line-bottom {
+        bottom: -18px;
+    }
+    
+    .infinity-line-left,
+    .infinity-line-right {
+        left: -18px;
+    }
+    
+    .infinity-line-right {
+        right: -18px;
+    }
+    
+    .infinity-corner {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .corner-top-left,
+    .corner-top-right {
+        top: -30px;
+    }
+    
+    .corner-bottom-left,
+    .corner-bottom-right {
+        bottom: -30px;
+    }
+    
+    .corner-top-left,
+    .corner-bottom-left {
+        left: -30px;
+    }
+    
+    .corner-top-right,
+    .corner-bottom-right {
+        right: -30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .infinity-line-horizontal {
+        left: -15px;
+        right: -15px;
+        height: 1.5px;
+    }
+    
+    .infinity-line-vertical {
+        top: -15px;
+        bottom: -15px;
+        width: 1.5px;
+    }
+    
+    .infinity-line-top,
+    .infinity-line-bottom {
+        top: -12px;
+    }
+    
+    .infinity-line-bottom {
+        bottom: -12px;
+    }
+    
+    .infinity-line-left,
+    .infinity-line-right {
+        left: -12px;
+    }
+    
+    .infinity-line-right {
+        right: -12px;
+    }
+    
+    .infinity-corner {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .corner-top-left,
+    .corner-top-right {
+        top: -22px;
+    }
+    
+    .corner-bottom-left,
+    .corner-bottom-right {
+        bottom: -22px;
+    }
+    
+    .corner-top-left,
+    .corner-bottom-left {
+        left: -22px;
+    }
+    
+    .corner-top-right,
+    .corner-bottom-right {
+        right: -22px;
+    }
+}
+
+ /* 波打つような外周線 */
+        .wave-border {
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            right: -40px;
+            bottom: -40px;
+            border: 10px solid transparent;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #1e1e2e, #1e1e2e) padding-box,
+                        conic-gradient(from 0deg, #00ff88, #0088ff, #ff0088, #ffff00, #00ff88) border-box;
+            animation: waveBorder 12s linear infinite;
+            z-index: -1;
+        }
+
+        /* アニメーション定義 */
+        @keyframes infinityFlow {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes infinityFlowVertical {
+            0% { background-position: 0 -200%; }
+            100% { background-position: 0 200%; }
+        }
+
+        @keyframes cornerPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+        }
+
+        @keyframes cornerRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes waveBorder {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .infinity-line-horizontal {
+                left: -10px;
+                right: -10px;
+                height: 2px;
+            }
+            
+            .infinity-line-vertical {
+                top: -10px;
+                bottom: -10px;
+                width: 2px;
+            }
+            
+            .corner-line {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .wave-border {
+                top: -30px;
+                left: -30px;
+                right: -30px;
+                bottom: -30px;
+            }
+        }
+
+/*.wave-border-reverse {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #fbfbfa5b, #fdfdfb85) padding-box,
+                conic-gradient(from 0deg, #00ff88, #0088ff, #ff0088, #ffff00, #00ff88) border-box;
+    animation: waveBorderReverse 50s linear infinite;
+    z-index: -1;
+}
+
+@keyframes waveBorderReverse {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(-180deg) scale(1.05); }
+    100% { transform: rotate(-360deg) scale(1); }
+}*/
+
+/* レスポンシブ対応 */
+       /* @media (max-width: 768px) {
+            
+            .wave-border-reverse {
+                top: -30px;
+                left: -30px;
+                right: -30px;
+                bottom: -30px;
+            }
+        }*/
+
+        /* === 1. パルス効果のある円 === */
+        /*.pulse-circle {
+            position: absolute;
+            width: 1500px;
+            height: 1500px;
+            border: 3px solid #007bff8d;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3s ease-in-out infinite;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            
+        }
+
+        
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.95); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.4; }
+            100% { transform: translate(-50%, -50%) scale(0.95); opacity: 1; }
+        }*/
+
+        
+
+ /* === 3. グラデーション波 === */
+        /*.gradient-wave {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            background: linear-gradient(45deg, 
+                rgba(255,107,107,0.4) 0%, 
+                rgba(78,205,196,0.4) 25%, 
+                rgba(199,121,208,0.4) 50%, 
+                rgba(255,195,113,0.4) 75%, 
+                rgba(255,107,107,0.4) 100%);
+            animation: wave 10s ease-in-out infinite;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(-30px) translateY(-30px) rotate(0deg); opacity: 0.4; }
+            25% { transform: translateX(30px) translateY(15px) rotate(90deg); opacity: 0.7; }
+            50% { transform: translateX(-15px) translateY(30px) rotate(180deg); opacity: 0.3; }
+            75% { transform: translateX(15px) translateY(-15px) rotate(270deg); opacity: 0.6; }
+        }*/
+
+
+
+/* app.css */
+
+/* === 2. 浮遊する粒子 === */
+        /*.floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffc107;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffc107;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 15%; top: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 85%; top: 25%; animation-delay: 1.5s; }
+        .particle:nth-child(3) { left: 25%; top: 75%; animation-delay: 3s; }
+        .particle:nth-child(4) { left: 75%; top: 70%; animation-delay: 4.5s; }
+        .particle:nth-child(5) { left: 50%; top: 15%; animation-delay: 6s; }
+        .particle:nth-child(6) { left: 20%; top: 85%; animation-delay: 7.5s; }
+        .particle:nth-child(7) { left: 80%; top: 60%; animation-delay: 2s; }
+        .particle:nth-child(8) { left: 40%; top: 40%; animation-delay: 5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+            25% { transform: translateY(-30px) translateX(15px); opacity: 1; }
+            50% { transform: translateY(-15px) translateX(-20px); opacity: 0.5; }
+            75% { transform: translateY(-35px) translateX(8px); opacity: 1; }
+        }*/
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #333;
+    background-color: #f8f8f8; /* オフホワイトの背景 */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.backimage{
+    background-image: url();
+}
+/* app.css */
+
+.maptitle{
+    color: #0f0f0f;
+}
+
+.map-title {
     text-align: center;
-    margin-bottom: 40px;
-    margin-top: 100px;
-    font-size: 10px;
+    margin: 100px auto; /* 上下のパディングを増やす */
+    background-color: #fcfafafd; /* 背景色は透明に */
+    border-radius: 0; /* 角丸は不要 */
+    
+    font-family: "Javanese Text";
+    font-size: 3.5em; /* フォントサイズを大きく */
+    font-weight: 700; /* 太めのフォントウェイト */
+    letter-spacing: 0.1em; /* 文字間隔を広げる */
+    color: #f8fafb; /* 濃い目の青っぽいグレー */
+    position: relative; /* アンダーラインのために必要 */
+    display: inline-block; /* アンダーラインの幅調整のため */
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    /*clip-path: inset(0 20% 0 20%); /* 上 右 下 左 の順で指定 */
+    
+}
+
+.map-title::after {
+    content: '';
+    position: absolute;
+    bottom: 125px; /* タイトルからの距離 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%; /* 初期状態では幅0 */
+    height: 5px;
+    background-color: #278ffe;/* アクセントカラー */
+    transition: width 0.4s ease-out; /* アニメーション */
+}
+
+.map-title::before {
+  content: '';
+  position: absolute;
+  top: 125px; /* タイトルからの距離を調整 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%; /* 初期状態では幅0 */
+  height: 5px;
+  background-color: #fd2828;
+  transition: width 0.4s ease-out; /* アニメーション */
+}
+
+.map-title:hover::after,
+.map-title:hover::before{
+    width: 100%; /* ホバー時に広がる幅 */
+}
+
+.map-title:focus::after,
+.map-title:focus::before {
+    width: 100%;
 }
 
 #mapblock{
-    background-color: rgb(252, 252, 252);
+    background-image: url();
+    background-position: center; /* 画像を中央に配置 */
+    background-repeat: no-repeat; /* 画像の繰り返しをオフにする */
+    background-attachment: fixed; /* ページをスクロールしても背景画像を固定する */
+    background-size: cover; /* ★ここが重要！画像をページ全体に広げる */;
+}
+
+.check-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.check-image1,
+.start-link,
+.check-image2 {
+  flex: 1; /* 等幅で配置 */
+  text-align: center;
+}
+
+.check-image1,
+.check-image2 {
+  flex: 0 0 auto; /* 画像のサイズを固定 */
+  max-width: 500px/* 必要に応じて調整 */
+}
+
+
+/* 画像の responsive 対応 */
+.check-image1 img,
+.check-image2 img {
+  width: 100%;
+  height: auto;
+  max-width: 500px; /* 必要に応じて調整 */
+}
+
+.check-image1,
+.check-image2 {
+  position: relative; /* 擬似要素を配置するために必要 */
+  padding: 10px; /* 内側に余白を設けて、枠線と画像を分離する */
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1); /* 背景色を白にして、画像が浮き出るように */
+  animation: gradientShift 3s ease-in-out infinite;
+  border-radius: 8px; /* 角を少し丸くする */
+  
+  overflow: hidden; /* 画像が枠からはみ出さないように */
+  /* --- ここから虹色の枠線を追加 --- */
+  box-shadow: #fe4242;  
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.check-image1 img,
+.check-image2 img {
+  display: block; /* 画像をブロック要素にして、余計な隙間をなくす */
+  max-width: 100%; /* 親要素の幅に合わせて画像を縮小 */
+  height: auto;
+  border-radius: 4px; /* 画像自体の角も少し丸くする */
+}
+
+
+.start{
+
+    text-align: center;
+    padding: 50px 0; /* 上下のパディングを増やす */
+    background-color: transparent; /* 背景色は透明に */
+    border-radius: 0; /* 角丸は不要 */
+
+    font-family: "Javanese Text";
+    font-size: 3.5em; /* フォントサイズを大きく */
+    font-weight: 700; /* 太めのフォントウェイト */
+    letter-spacing: 0.1em; /* 文字間隔を広げる */
+    color: #2c3e50; /* 濃い目の青っぽいグレー */
+    position: relative; /* アンダーラインのために必要 */
+    display: inline-block; /* アンダーラインの幅調整のため */
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+}
+
+.start::after {
+    content: '';
+    position: absolute;
+    bottom: 30px; /* タイトルからの距離 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; /* 初期状態では幅0 */
+    height: 5px;
+    background-color: #fdf903; /* アクセントカラー */
+    transition: width 0.4s ease-out; /* アニメーション */
+}
+
+.start::before {
+  content: '';
+  position: absolute;
+  top: 30px; /* タイトルからの距離を調整 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; /* 初期状態では幅0 */
+  height: 5px;
+  background-color: #40f58b;
+  transition: width 0.4s ease-out;
+}
+
+.start:hover::after,
+.start:hover::before{
+    width: 100%; /* ホバー時に広がる幅 */
+}
+
+.start-link{
+    text-align: center;
+}
+
+.link{
+    display: inline-block;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border-color: #000;
+}
+
+.link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    color: #007bff;
+}
+
+.attention-box {
+  padding: 30px;
+  margin: 50px 0;
+  border-left: 10px solid #ff0b07; /* 左側に太い黄色い線 */
+  border-right: 10px solid #2c07ff;
+  background-color: rgba(249, 252, 254, 0.911); /* 薄い黄色い背景 */
+  color: #0e0700; /* 濃い文字色 */
+  font-family: sans-serif;
+  border-radius: 4px; /* 角を少し丸くする */;
+  text-align: center;
+}
+
+#second-nav{
+    background: #2a2a2ac9;
+}
+
+/* 幾何学アニメーションのコンテナ */
+        .geometry-container {
+            position: absolute;
+            top: 200;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* 回転する幾何学ライン */
+        .rotating-line {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin: 0 0;
+            width: 4px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.887), transparent);
+        }
+
+        /* 各ラインの設定 */
+        .rotating-line:nth-child(1) {
+            height: 400px;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.894), transparent);
+            animation: rotate360 8s linear infinite;
+        }
+
+        .rotating-line:nth-child(2) {
+            height: 250px;
+            background: linear-gradient(90deg, transparent, rgba(77, 208, 197, 0.89), transparent);
+            animation: rotate360 6s linear infinite reverse;
+        }
+
+        .rotating-line:nth-child(3) {
+            height: 200px;
+            background: linear-gradient(90deg, transparent, rgba(69, 183, 209, 0.873), transparent);
+            animation: rotate360 10s linear infinite;
+        }
+
+        .rotating-line:nth-child(4) {
+            height: 222px;
+            background: linear-gradient(90deg, transparent, rgba(150, 206, 180, 0.949), transparent);
+            animation: rotate360 12s linear infinite reverse;
+        }
+
+        /* 回転アニメーション */
+        @keyframes rotate360 {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 浮遊する光る点 */
+        .floating-dot {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(77, 208, 196, 0.3));
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(77, 208, 196, 0.6);
+        }
+
+        /* 各点の位置と浮遊アニメーション */
+        .floating-dot:nth-child(5) {
+            left: 15%;
+            top: 25%;
+            animation: float1 4s ease-in-out infinite;
+        }
+
+        .floating-dot:nth-child(6) {
+            left: 85%;
+            top: 30%;
+            animation: float2 3.5s ease-in-out infinite 1s;
+        }
+
+        .floating-dot:nth-child(7) {
+            left: 20%;
+            top: 75%;
+            animation: float3 4.2s ease-in-out infinite 2s;
+        }
+
+        .floating-dot:nth-child(8) {
+            left: 80%;
+            top: 80%;
+            animation: float4 3.8s ease-in-out infinite 1.5s;
+        }
+
+        /* 浮遊アニメーション */
+        @keyframes float1 {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-15px) scale(1.3);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float2 {
+            0%, 100% {
+                transform: translateX(0px) translateY(0px) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateX(10px) translateY(-20px) scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float3 {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-10px) scale(1.4);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes float4 {
+            0%, 100% {
+                transform: translateX(0px) translateY(0px) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateX(-8px) translateY(-18px) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* 回転する四角形の枠線（背景のアニメーションと調和） */
+        .rotating-square {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 350px;
+            height: 350px;
+            border: 2px solid rgba(12, 9, 9, 0.932);
+            transform: translate(-50%, -50%);
+            animation: rotateSquare 15s linear infinite;
+            background: linear-gradient(45deg, #acacb2, #f6f6f9) padding-box,
+                        conic-gradient(from 0deg, #00ff88, #0088ff, #ff0088, #ffff00, #00ff88) border-box;
+        }
+
+        @keyframes rotateSquare {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+.starttext{
+  color: #f8f4f4;
+}
+
+
+.toptext{
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 40px;
+
+    
+    color: #2c3e50; /* 濃い目の青っぽいグレー */
+    position: relative; /* アンダーラインのために必要 */
+    display: inline-block; /* アンダーラインの幅調整のため */
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+}
+
+.toptext::after {
+    content: '';
+    position: absolute;
+    bottom: 30px; /* タイトルからの距離 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; /* 初期状態では幅0 */
+    height: 5px;
+    background-color: #0f0e00; /* アクセントカラー */
+    transition: width 0.4s ease-out; /* アニメーション */
+}
+
+.toptext:hover::after{
+    width: 100%; /* ホバー時に広がる幅 */
+}
+.top-link{
+    text-align: center;
+    
+}
+
+.toppage-link {
+    display: inline-block;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border-color: #000;
+}
+
+.toppage-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    color: #007bff;
 }

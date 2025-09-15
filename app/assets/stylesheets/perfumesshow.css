@@ -1,24 +1,292 @@
-.intro{
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.perfume-container{
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
+        
 
-.national-image{
-  max-width: 600px;
-    
-}
+        .intoro {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .intoro h5 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .intoro p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .perfume-container {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 30px auto;
+            max-width: 900px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, #fbfbfb, #fffefe);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .result-header h1 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 60px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+            position: relative;
+        }
+
+        .result-content {
+            padding: 40px;
+        }
+
+        .country-description {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-left: 5px solid #ff463f;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .country-description p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .national-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 20px auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        
+        .outro{
+          text-align: center;
+        }
+
+        /* 超大型インフィニティシンボル */
+        .infinity-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .infinity {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            opacity: 0.4;
+        }
+
+        .infinity::before,
+        .infinity::after {
+            content: '';
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 6px solid;
+            border-radius: 50%;
+            animation: infinityRotate 6s linear infinite;
+        }
+
+        .infinity::before {
+            left: 0;
+            transform-origin: 80px 80px;
+            border-color: #3b82f6;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), inset 0 0 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .infinity::after {
+            right: 0;
+            transform-origin: 80px 80px;
+            animation-direction: reverse;
+            border-color: #a855f7;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.3), inset 0 0 30px rgba(168, 85, 247, 0.2);
+        }
+
+        @keyframes infinityRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .infinity:nth-child(1) {
+            top: 5%;
+            left: 60%;
+            animation: infinityMegaFloat1 12s ease-in-out infinite;
+            transform: scale(1.2);
+        }
+
+        .infinity:nth-child(2) {
+            top: 50%;
+            left: -10%;
+            animation: infinityMegaFloat2 15s ease-in-out infinite;
+            opacity: 0.3;
+            transform: scale(0.8);
+        }
+
+        .infinity:nth-child(3) {
+            top: 20%;
+            left: 20%;
+            animation: infinityMegaFloat3 18s ease-in-out infinite;
+            opacity: 0.25;
+            transform: scale(1.5);
+        }
+
+        @keyframes infinityMegaFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1.2) rotate(0deg); }
+            25% { transform: translate(-120px, -80px) scale(1.5) rotate(90deg); }
+            50% { transform: translate(80px, 120px) scale(0.9) rotate(180deg); }
+            75% { transform: translate(-60px, 60px) scale(1.3) rotate(270deg); }
+        }
+
+        @keyframes infinityMegaFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(0.8) rotate(0deg); }
+            33% { transform: translate(150px, -100px) scale(1.4) rotate(120deg); }
+            66% { transform: translate(-80px, 100px) scale(0.6) rotate(240deg); }
+        }
+
+        @keyframes infinityMegaFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1.5) rotate(0deg); }
+            20% { transform: translate(-100px, -60px) scale(1.8) rotate(72deg); }
+            40% { transform: translate(120px, 40px) scale(1.1) rotate(144deg); }
+            60% { transform: translate(-40px, 120px) scale(1.6) rotate(216deg); }
+            80% { transform: translate(60px, -100px) scale(1.2) rotate(288deg); }
+        }
+
+        /* 巨大幾何学図形パーティクル */
+        .geometric-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+
+        .hexagon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            animation: megaGeometricFloat 25s linear infinite;
+        }
+
+        /*.triangle {
+            width: 0;
+            height: 0;
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 140px solid;
+            border-bottom-color: #ef4444;
+            animation: megaGeometricSpin 20s linear infinite;
+            filter: drop-shadow(0 0 25px #ef4444);
+        }
+
+        .diamond {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #10b981, #059669);
+            transform: rotate(45deg);
+            animation: megaGeometricPulse 15s ease-in-out infinite;
+        }
+
+        .circle {
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, #f59e0b, #d97706);
+            border-radius: 50%;
+            animation: megaGeometricBounce 18s ease-in-out infinite;
+        }*/
+
+        .octagon {
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(45deg, #8b5cf6, #7c3aed);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            animation: megaGeometricWave 22s ease-in-out infinite;
+        }
+
+        @keyframes megaGeometricFloat {
+            0% { transform: translateY(120vh) rotate(0deg) scale(0.5); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-200px) rotate(720deg) scale(1.5); opacity: 0; }
+        }
+
+        @keyframes megaGeometricSpin {
+            0% { transform: rotate(0deg) scale(1) translateX(0); }
+            25% { transform: rotate(180deg) scale(1.8) translateX(50px); }
+            50% { transform: rotate(360deg) scale(0.7) translateX(-30px); }
+            75% { transform: rotate(540deg) scale(1.5) translateX(80px); }
+            100% { transform: rotate(720deg) scale(1) translateX(0); }
+        }
+
+        @keyframes megaGeometricPulse {
+            0%, 100% { transform: rotate(45deg) scale(1) translateX(0) translateY(0); }
+            25% { transform: rotate(135deg) scale(2) translateX(-50px) translateY(50px); }
+            50% { transform: rotate(225deg) scale(0.5) translateX(100px) translateY(-100px); }
+            75% { transform: rotate(315deg) scale(1.7) translateX(-80px) translateY(-50px); }
+        }
+
+        @keyframes megaGeometricBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            25% { transform: translateY(-150px) scale(1.3); }
+            50% { transform: translateY(100px) scale(0.8); }
+            75% { transform: translateY(-80px) scale(1.5); }
+        }
+
+        @keyframes megaGeometricWave {
+            0%, 100% { transform: translateX(0) rotate(0deg) scale(1); }
+            20% { transform: translateX(-200px) rotate(144deg) scale(1.4); }
+            40% { transform: translateX(150px) rotate(288deg) scale(0.8); }
+            60% { transform: translateX(-100px) rotate(432deg) scale(1.6); }
+            80% { transform: translateX(180px) rotate(576deg) scale(1.1); }
+        }
+

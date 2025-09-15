@@ -29,7 +29,7 @@ a {
 }
 
 a:hover {
-  color: #f00;
+  color: #007bff;
 }
 
 #first-block {
@@ -45,6 +45,7 @@ a:hover {
 
 .title-container {
   text-align: center;
+  background-color: #f0f0f09e;
 }
 
 h1 {
@@ -79,19 +80,43 @@ h3 {
   color: #444;
 
   width: 30%;
+  display: flex;
+  justify-content: center; /* リンクを中央に配置 */
+  align-items: center; /* 垂直方向の中央揃え */
+  gap: 20px; /* リンク間のスペースを20px空ける */
+}
+
+.link-text p::after {
+  content: "/"; /* 疑似要素として表示する内容 */
+  margin: 0 30px; /* スラッシュとリンクの間に余白を追加 */
+  color: #333; /* スラッシュの色 */
+  font-size: 1.5em; /* 親要素のフォントサイズの2倍 */
+  font-weight: bold; /* 太字にする */
+  line-height: 1; /* 行の高さを調整（要素の高さに合わせる） */
+  vertical-align: middle; /* 垂直方向の中央に揃える */
 }
 
 .map_link {
-  color: #ffffff; /* 色を白に変更 */
-  background-color: #007bff; /* 背景色を青に変更 */
-  padding: 10px 20px; /* パディングを追加してボタンのように見せる */
-  text-decoration: none; /* 下線を削除 */
-  border-radius: 5px; /* 角を丸くする */
+    display: inline-block;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-color: #000;
 }
 
-/* マウスホバー */
 .map_link:hover {
-  background-color: #0056b3; /* ホバー時に少し暗い色にする */
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    color: #007bff;
 }
 .info-title {
   font-size: 60px;
@@ -170,3 +195,5 @@ footer {
   font-size: 15px;
   color: #fff;
 }
+
+

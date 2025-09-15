@@ -2,51 +2,56 @@
 <html lang="ja"><!--言語の指定-->
   <head><!--ページに表示されない情報(サイトの裏側の設定)-->
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="stylesheets/country_postsindex.css">
     <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
-    <link rel="stylesheet" href="./stylesheets/cuntry_postsindex.css">
-
+    <%= stylesheet_link_tag "country_postsindex", "data-turbo-track": "reload" %>
+  </head>
 <body class="posts-page">
 <header>
 </header>
 </body>
 
-<h2>About <%= @country.name %></h2>
+<div class="page-title">About <%= @country.name %></div>
 
-<ul>
+
+
+
 <div class="country-container">
-  
+  <div class="country-text">
   <% @country_posts.each do |post| %>
     <li style="margin-bottom:1rem;">
 
     <div class="country-name">
-      <strong><%= post.title %></strong><br>
+      <strong><%= post.title %></strong>
     </div>
-  
+
+    <div class="country-info">
+      <%= simple_format(post.content) %>
+    </div>
+  </div>
   
   <div class="country-image">
     <% if post.image.attached? %>
-            <%= image_tag post.image, size: '250x200'%>
+            <%= image_tag post.image, size: '700x400'%>
         <% end %>
   </div>
-</div>
 
-   <div class="country-info">
-      <%= simple_format(post.content) %><br>
+
    </div>
-    <%= link_to "詳細を見る", country_country_post_path(@country, post), class: "btn" %>
+    <%= link_to "管理者用", country_country_post_path(@country, post), class: "btn" %>
   
-
+  </div>
 
 
 
 
     
-    </li>
+    
   <% end %>
-</ul>
 
-<p><%= link_to "地図へ戻る", root_path %></p>
+
+
+
 
 <footer>	
 </footer>
+<%= link_to "World Mapへ戻る", countries_map_path, class: "map_link" %>

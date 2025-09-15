@@ -2,30 +2,27 @@
 <html lang="ja"><!--言語の指定-->
   <head><!--ページに表示されない情報(サイトの裏側の設定)-->
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
-    <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
-    <link rel="stylesheet" href="./stylesheets/index.css">
+    <title>Globalink</title><!--ブラウザのタブのタイトルを指定-->
+    <%= stylesheet_link_tag "index", "data-turbo-track": "reload" %>
   </head>
   <body>
     <header class="header-nav">
       <nav><a href="#first-block">Home</a></nav>
-      <nav><a href="#second-block">About GeekNational</a></nav>
-      <nav><a href="#third-block">G20/BRICs</a></nav>
+      <nav><a href="#second-block">About Globalink</a></nav>
+      <nav><a href="#third-block">Globalink 詳細</a></nav>
     </header>
 
   <!--  コンテンツを一旦仮置きする  -->
     <section id="first-block">
      <div class="title-container">
-      <h1>GeekNational</h1>
+      <h1>Globalink</h1>
       <h3>~ 指先一つ、世界の旅へ ~</h3>
-      <p>
-      <br><%= link_to "World Mapへ", countries_map_path, class: "map_link" %></br>
-      </p>
+      
     </div>
     </section>
     <section id="second-block">
     <p class="info-title">
-        About GeekNational
+        About Globalink
     </p>
     <div class="about-container">
       <p class="info-text">
@@ -45,6 +42,11 @@
         <p>
         <b><%= link_to "World Mapへ", countries_map_path, class: "map_link" %></b>
         </p>
+        
+        
+        <div class="start-link">
+        <b><%= link_to "診断を始める", new_perfume_path, class: "link" %></b>
+        </div>
         </div>
 
         <p class="info-text">
@@ -66,32 +68,32 @@
     </section>
     <section id="third-block">
     <p class="events-title">
-      G20の内約
+      Globalinkとは？
     </p>
     <div class="event-container">
       <div class="event">
-        <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1756622597/G20-cover-image_4b32b63c5c28c858e051e9d1a2a717a1_lxvb07.png" class="G20-image">
+        <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1757557274/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2025-09-11_112034_feddzu.png" class="G20-image">
         <p class="event-name">
-          <span>G7</span>
+          <span>成り立ち</span>
           <br>
           <br>
-          アメリカ合衆国<br>
-          日本 カナダ<br>
-          ドイツ イギリス<br>
-          フランス イタリア<br>
+          海外の国々をもっと知りたい！
+          でもたくさんの国があって一つ一つ調べるのが面倒．．．
+          そんな課題を解決するため、ワンクリックで国の情報にアクセスできる
+          「Globalink」を開発しました。有名な観光地や、伝統的な食べ物を中心とした情報を知り、興味を持つことができたらぜひ
+          ご自身で、より深くその国について調べてみてください。<br>
+          <br>
+          <br>
+          <span>診断機能</span>
+          <br>
+          <br>
+          たくさんの国があるけど自分に合った国ってあるのかな？
+          そんな興味がある方は、ぜひ診断機能をお試しください。
+          ご自身の性格や価値観、旅行先の決め手に関する質問から、あなたに合った国を診断
+          することができます。出てきた国を、あなたの「推し国」にしてみてはいかがでしょうか。
         </p>
       </div>
-      <div class="event">
-        <p class="event-name">
-          <span>BRICs</span>
-          <br>
-          <br>
-          中国 インド<br>
-          ロシア ブラジル<br>
-        </p>
-        <image src="https://res.cloudinary.com/demmahfmp/image/upload/v1756622795/download_b5b02y.png" class="G20-image">
-      </div>
-    </div>
+      
     </section>
   <!--  コンテンツはここまで  -->
 
@@ -100,4 +102,3 @@
     </footer>
   </body>
 </html>
-<%= link_to "World Mapへ", countries_map_path, class: "link" %>

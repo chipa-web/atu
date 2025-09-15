@@ -2,10 +2,13 @@
 <html lang="ja"><!--言語の指定-->
   <head><!--ページに表示されない情報(サイトの裏側の設定)-->
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="stylesheets/countrypostsshow.css">
     <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
-    <link rel="stylesheet" href="./stylesheets/countrypostsshow.css">
+    <%= stylesheet_link_tag "country_postsindex", "data-turbo-track": "reload" %>
+  </head>
 <h2><%= @country.name %>：<%= @country_post.title %></h2>
+
+<% if @country_post.image.attached? %> <%= image_tag @country_post.image %> <% end %>
+
 <%= simple_format(@country_post.content) %>
 
 <p>

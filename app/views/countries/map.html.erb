@@ -2,15 +2,71 @@
 <html lang="ja"><!--言語の指定-->
   <head><!--ページに表示されない情報(サイトの裏側の設定)-->
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="stylesheets/map.css">
     <title>GeekNational</title><!--ブラウザのタブのタイトルを指定-->
-    <link rel="stylesheet" href="./stylesheets/map.css">
+    <%= stylesheet_link_tag "map", "data-turbo-track": "reload" %>
   </head>
+<div class=backimage>
 <section id="mapblock">
+            <!-- 四隅の装飾 -->
+            <div class="corner-decoration top-right"></div>
+            <div class="corner-decoration bottom-left"></div>
+            <div class="corner-decoration bottom-right"></div>
+
+            
+
+<header class="mappage-nav">
+<label for="menu-toggle" class="hamburger-menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+</label>
+  
+  <input type="checkbox" id="menu-toggle" class="hidden-checkbox">
+
+  <nav class="nav-menu">
+      <a href="#first-nav">Wolrd Map</a>
+      <a href="#second-nav">国診断</a>
+      <a href="#third-nav">トップページへ戻る</a>
+  </nav>
+</header>
+
+<body>
+<section id="first-nav"> 
 <div class="map-title">
-<h1>~World　Map~</h1>
+<h1 class="maptitle">~World　Map~</h1>
 </div>
-<div id="world-map"></div>
+<div id="world-map">
+
+<div class="infinity-line-horizontal infinity-line-top"></div>
+    <div class="infinity-line-horizontal infinity-line-bottom"></div>
+    <div class="infinity-line-vertical infinity-line-left"></div>
+    <div class="infinity-line-vertical infinity-line-right"></div>
+    <div class="infinity-corner corner-top-left"></div>
+    <div class="infinity-corner corner-top-right"></div>
+    <div class="infinity-corner corner-bottom-left"></div>
+    <div class="infinity-corner corner-bottom-right"></div>
+    <!-- 波打つ外周線 -->
+    <div class="wave-border-reverse"></div>
+    <div class="wave-border"></div>
+
+    <!-- 1. パルス効果のある円 -->
+            <div class="pulse-circle"></div>
+    
+    <!-- 2. 浮遊する粒子 -->
+            <div class="floating-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+    <!-- 3. グラデーション波 -->
+            <div class="gradient-wave"></div>
+    
+    
 
 <script type="module">
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
@@ -38,7 +94,7 @@
     const projection = d3.geoMercator().rotate([-135, 0]).scale(150).translate([480, 300]);
     const path = d3.geoPath().projection(projection);
 
-    const isoNumericToAlpha2 = { "392": "JP", "840": "US" };
+    const isoNumericToAlpha2 = { "392": "JP", "840": "US", "826": "GB", "643": "RU", "276": "DE", "156": "CN", "356": "IN", "076": "BR", "250": "FR", "380": "IT", "124": "CA", "410": "KR", "484": "MX", "036": "AU", "360": "ID", "792": "TR", "682": "SA", "756": "CH", "528": "NL", "724": "ES"};
 
     d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world => {
     const countries = feature(world, world.objects.countries).features;
@@ -70,12 +126,56 @@
         });
     });
 </script>
+</div>
+</body>
+</section>
+<div class="attention-box">調べたい国にカーソルを合わせてクリックしてみましょう！<br>小さな国は、地図を拡大して探すこともできます。</br>
+※クリックしてから表示されるまでに時間がかかる場合があります。</div>
+
+
+<section id="second-nav">
+<!-- 幾何学アニメーション -->
+        <div class="geometry-container">
+            <!-- 回転する四角形の枠線 -->
+            <div class="rotating-square"></div>
+            
+            <!-- 回転するライン -->
+            <div class="rotating-line"></div>
+            <div class="rotating-line"></div>
+            <div class="rotating-line"></div>
+            <div class="rotating-line"></div>
+            
+            <!-- 浮遊する点 -->
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+        </div>
+<div class="start">
+<h1 class="starttext">国診断</h1>
+</div>
+<div class="check-container">
+<div class="check-image1">
+ <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1757763779/520267-shutterstock_294909029_rgl8fn.jpg">
+</div>
+<div class="start-link">
+<%= link_to "診断を始める", new_perfume_path, class: "link" %>
+</div>
+<div class="check-image2">
+  <img src="https://res.cloudinary.com/demmahfmp/image/upload/v1757763237/c00d39c8-e162-4b34-b582-a87c59329f16_kezyu6.avif">
+</div>
+</div>
 </section>
 
-
-<h2>診断スタート</h2>
-<%= link_to "診断を始める", new_perfume_path, class: "link" %>
-
+<sectin id="third-nav">
+<div class="toptext">
+<h2>トップへもどる</h2>
+</div>
+<div class="top-link">
+<p><%= link_to "トップページへ", root_path, class: "toppage-link" %></p>
+</div>
+</section>
+　　<p>管理者のみ</P>
 <% if user_signed_in? %>
     <p>ログイン中：<%= current_user.email %></p>
     <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -87,3 +187,7 @@
     <p><%= link_to "新規投稿", new_country_post_path %></p>
 <% end %>
 
+</div>
+<footer>
+      <p>Copyright © ○○○○ All Rights Reserved.</p>
+    </footer>
