@@ -92,9 +92,54 @@ header{
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 2rem; /* 左右にパディングを追加 */
   z-index: 1000; /* 高い値を設定して、他の要素より手前に表示 */
+}
+
+/* ロゴのスタイルを追加 */
+.logo {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace; /* モダンな等幅フォント */
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #00d4ff, #ff6b6b, #4ecdc4);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradientMove 4s ease infinite;
+    letter-spacing: 3px;
+     /* 大文字でかっこよく */
+    position: relative;/
+}
+
+.logo::before {
+    content: "🌐 "; /* 地球儀の絵文字 */
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    color: #00d4ff;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+
+
+/* アニメーション */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes flash {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; filter: drop-shadow(0 0 5px #ff6b6b); }
 }
 
 nav {

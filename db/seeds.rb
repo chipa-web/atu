@@ -111,3 +111,53 @@ end
 Country.find_or_create_by!(code: "ES") do |country|
   country.name = "Spain"
 end
+
+# 南アフリカ (ZA, 710)
+ Country.find_or_create_by!(code: "ZA") do |country|
+   country.name = "South Africa"
+ end
+
+# エジプト (EG, 818)
+ Country.find_or_create_by!(code: "EG") do |country|
+   country.name = "Egypt"
+ end
+
+# アルゼンチン (AR, 032)
+ Country.find_or_create_by!(code: "AR") do |country|
+   country.name = "Argentina"
+ end
+
+# タイ (TH, 764)
+ Country.find_or_create_by!(code: "TH") do |country|
+   country.name = "Thailand"
+ end
+
+# ニュージーランド (NZ, 554)
+ Country.find_or_create_by!(code: "NZ") do |country|
+   country.name = "New Zealand"
+ end
+
+# ギリシャ (GR, 300)
+ Country.find_or_create_by!(code: "GR") do |country|
+   country.name = "Greece"
+ end
+
+# ポルトガル (PT, 620)
+ Country.find_or_create_by!(code: "PT") do |country|
+   country.name = "Portugal"
+ end
+
+# ノルウェー (NO, 578)
+ Country.find_or_create_by!(code: "NO") do |country|
+   country.name = "Norway"
+ end
+
+# スウェーデン (SE, 752)
+ Country.find_or_create_by!(code: "SE") do |country|
+   country.name = "Sweden"
+ end
+
+# フィンランド (FI, 246)
+ Country.find_or_create_by!(code: "FI") do |country|
+   country.name = "Finland"
+ end

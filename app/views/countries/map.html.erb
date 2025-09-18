@@ -15,6 +15,8 @@
             
 
 <header class="mappage-nav">
+<!-- ここに Globalink のロゴ/タイトルを追加 -->
+<div class="logo">Globalink</div>
 <label for="menu-toggle" class="hamburger-menu">
     <span class="bar"></span>
     <span class="bar"></span>
@@ -94,7 +96,7 @@
     const projection = d3.geoMercator().rotate([-135, 0]).scale(150).translate([480, 300]);
     const path = d3.geoPath().projection(projection);
 
-    const isoNumericToAlpha2 = { "392": "JP", "840": "US", "826": "GB", "643": "RU", "276": "DE", "156": "CN", "356": "IN", "076": "BR", "250": "FR", "380": "IT", "124": "CA", "410": "KR", "484": "MX", "036": "AU", "360": "ID", "792": "TR", "682": "SA", "756": "CH", "528": "NL", "724": "ES"};
+    const isoNumericToAlpha2 = { "392": "JP", "840": "US", "826": "GB", "643": "RU", "276": "DE", "156": "CN", "356": "IN", "076": "BR", "250": "FR", "380": "IT", "124": "CA", "410": "KR", "484": "MX", "036": "AU", "360": "ID", "792": "TR", "682": "SA", "756": "CH", "528": "NL", "724": "ES", "710": "ZA", "818": "EG", "032": "AR", "764": "TH", "554": "NZ", "300": "GR", "620": "PT", "578": "NO", "752": "SE", "246": "FI"};
 
     d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(world => {
     const countries = feature(world, world.objects.countries).features;
@@ -189,5 +191,5 @@
 
 </div>
 <footer>
-      <p>2025 Atsuki Matsumoto / A journey of discovery.</p>
+      <p>2025 Atsuki Matsumoto / Click the world, discover through IRIS.</p>
     </footer>
