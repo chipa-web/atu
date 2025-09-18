@@ -5,7 +5,7 @@ class CountryPostsController < ApplicationController
     before_action :set_country_post, only: [:show, :edit, :update, :destroy]
 
     def index
-        @country_posts = @country.country_posts.includes(:user)
+        @country_posts = @country.country_posts.includes(:user).order(created_at: :asc)
     end
 
     def new
