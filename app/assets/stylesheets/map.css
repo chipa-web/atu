@@ -111,7 +111,7 @@ header{
     animation: gradientMove 4s ease infinite;
     letter-spacing: 3px;
      /* 大文字でかっこよく */
-    position: relative;/
+    position: relative;
 }
 
 .logo::before {
