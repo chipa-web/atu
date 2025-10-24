@@ -9,12 +9,21 @@
 
     <%= yield :head %>
 
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+   
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/demmahfmp/image/upload/v1761299176/favicon-32x32_dqqeus.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/demmahfmp/image/upload/v1761299160/apple-touch-icon_bxkm63.png">
+
+    <meta property="og:title" content="GlobaLink | 世界地図から国を学べるWebサービス">
+    <meta property="og:description" content="世界地図から各国の情報を直感的に調べられるWebサービス。国際理解を深めよう。">
+    <meta property="og:image" content="https://res.cloudinary.com/demmahfmp/image/upload/v1761299176/favicon-32x32_dqqeus.png">
+    <meta property="og:url" content="https://globelink.jp<%= request.path %>"> 
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GlobaLink">
+
+    <meta name="twitter:card" content="summary"> 
+    <meta name="twitter:image" content="https://res.cloudinary.com/demmahfmp/image/upload/v1761299188/ogp-icon_dxpcck.png">
   </head>
 
   <body>
