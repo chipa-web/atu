@@ -66,6 +66,14 @@ a:hover {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+            #first-block,#second-block,#third-block {
+                width:350% /* 要素を完全に非表示にする */
+            }
+            
+            
+        }
+
 .title-container {
   text-align: center;
   background-color: #f0f0f09e;
@@ -96,6 +104,8 @@ h3 {
   flex-direction: row;
   align-items: center;
 }
+
+
 
 .link-text {
   font-size: 20px;
@@ -225,21 +235,16 @@ footer {
     footer p,
     .footer-content { /* 該当するフッター要素のクラスやタグ名に修正してください */
         /* 必須: 幅を画面幅のほぼ100%に設定 */
-        width: 95% !important; 
-        max-width: 100% !important;
+        width: 350% !important; 
+        max-width: 350% !important;
         
         /* 必須: 文字の自動折り返しを有効にする */
         white-space: normal !important; 
         
-        /* 念のため、floatや固定配置を解除 */
-        float: none !important; 
         
-        /* 中央寄せを解除し、左寄せにする */
-        text-align: left !important; 
         
         /* 左右に余白を設ける */
         margin: 0 auto;
         padding: 5px 2.5%; 
     }
 }
-
