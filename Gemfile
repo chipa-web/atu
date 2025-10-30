@@ -57,6 +57,9 @@ group :test do
   gem "selenium-webdriver"
 end
 
+# サイトマップ生成用
+gem 'sitemap_generator'
+
 gem "devise", "~> 4.9"
 #gem 'dotenv-rails'
 gem 'cloudinary'
