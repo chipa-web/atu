@@ -9,7 +9,7 @@
 
     <%= yield :head %>
 
-   
+   <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script><script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.25.0-min.js.gz"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('d550a6ab15fb73f2f1c91feb2541bf78', {"autocapture":{"elementInteractions":true}});</script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/demmahfmp/image/upload/v1761299176/favicon-32x32_dqqeus.png">
